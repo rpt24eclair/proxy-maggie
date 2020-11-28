@@ -1,0 +1,23 @@
+{
+  "name": "grezzzy-proxy",
+  "version": "1.0.0",
+  "description": "Build proxy server for somebirds FEC project",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rpt24saltysnack/grezzzy-proxy.git"
+  },
+  "author": "GABRIEL GUTIERREZ",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rpt24saltysnack/grezzzy-proxy/issues"
+  },
+  "homepage": "https://github.com/rpt24saltysnack/grezzzy-proxy#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "path": "^0.12.7"
+  }
+}

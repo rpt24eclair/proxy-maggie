@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <title>Somebirds App</title>
+    <meta charset='utf-8'>
+    <!-- <link rel='stylesheet' type='text/css' href='styles.css'> -->
+    <link rel='stylesheet' type='text/css' href='http://localhost:3002/styles.css'>
+    <!-- <link rel='stylesheet' type='text/css' href='http://localhost:3001/styles.css'>
+    <link rel='stylesheet' type='text/css' href='http://localhost:3002/styles.css'> -->
+  </head>
+  <body>
+    <div id='app'>
+      <div id='summary'></div>
+      <div id='sizes-colors'>Sizes</div>
+      <div id='feedback'></div>
+    </div>
+
+    <script src='http://localhost:3001/dist/bundle.js'></script>
+    <script src='http://localhost:3002/bundle.js'></script>
+    <!-- <script src='http://localhost:3003/'></script> -->
+    <script>
+      ReactDOM.render(
+        React.createElement(ProductMenu, { modelName: 'mens-wool-runners', modelId: 1 }),
+        document.getElementById('summary')
+      );
+      ReactDOM.render(
+        React.createElement(App, { modelName: 'mens-wool-runners', shoeID: 1 }),
+        document.getElementById('sizes-colors')
+      );
+    </script>
+  </body>
+</html>
