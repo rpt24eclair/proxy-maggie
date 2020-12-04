@@ -3,30 +3,40 @@
   <head>
     <title>Somebirds App</title>
     <meta charset='utf-8'>
-    <!-- <link rel='stylesheet' type='text/css' href='styles.css'> -->
+    <link rel='stylesheet' type='text/css' href='styles.css'>
     <link rel='stylesheet' type='text/css' href='http://localhost:3002/styles.css'>
-    <!-- <link rel='stylesheet' type='text/css' href='http://localhost:3001/styles.css'>
-    <link rel='stylesheet' type='text/css' href='http://localhost:3002/styles.css'> -->
+    <link rel='stylesheet' type='text/css' href='http://localhost:3001/dist/styles.css'>
   </head>
   <body>
     <div id='app'>
-      <div id='summary'></div>
-      <div id='sizes-colors'>Sizes</div>
-      <div id='feedback'></div>
+      <div class='grid-2-1'>
+        <div id='product-pictures'></div>
+        <div class='grid-sidebar'>
+          <div id='product-header'>
+            <h1 id='header-name'>Men's Wool Runners</h1>
+            <p id='header-price'>$125</p>
+          </div>
+          <div id='ColorAndSizeSelection'>Sizes</div>
+          <div id='summary'></div>
+        </div>
+      </div>
+      <!-- <div id='feedback-container'></div> -->
     </div>
 
-    <script src='http://localhost:3001/dist/bundle.js'></script>
-    <script src='http://localhost:3002/bundle.js'></script>
+    <!-- <script src='http://localhost:3001/dist/bundle.js'></script> -->
+    <!-- <script src='http://localhost:3002/bundle.js'></script> -->
     <!-- <script src='http://localhost:3003/'></script> -->
+    <script crossorigin src="https://unpkg.com/react@16.8/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16.8/umd/react-dom.production.min.js"></script>
     <script>
-      ReactDOM.render(
-        React.createElement(ProductMenu, { modelName: 'mens-wool-runners', modelId: 1 }),
-        document.getElementById('summary')
-      );
-      ReactDOM.render(
-        React.createElement(App, { modelName: 'mens-wool-runners', shoeID: 1 }),
-        document.getElementById('sizes-colors')
-      );
+      // ReactDOM.render(
+      //   React.createElement(ProductMenu, { modelName: 'mens-wool-runners', modelId: 1 }, null),
+      //   document.getElementById('summary')
+      // );
+      // ReactDOM.render(
+      //   React.createElement(App),
+      //   document.getElementById('root')
+      // );
     </script>
   </body>
 </html>
