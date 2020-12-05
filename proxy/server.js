@@ -8,27 +8,23 @@ const app = express();
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/products/:productId', (req, res) => {
-  //console.log('here')
-  Promise.all([
-    axios({
-      method: 'get',
-      url: `http://localhost:3001/dist/bundle.js`
-    }),
-    axios({
-      method: 'get',
-      url: `http://localhost:3002/bundle.js`
-    })
-  ])
-  .then((response) => {
-    //console.log(response)
-    res.send(response);
-  })
-  .catch((err) => {
-    res.send('error with bundle request');
-  })
+app.get('/bundles', (req, res) => {
+  console.log('here');
+  promise1 = axios.get(`http://localhost:3001/dist/bundle.js`);
+  promise2 = axios.get(`http://localhost:3002/bundle.js`);
 
-})
+  Promise.all([promise1, promise2])
+    .then( (response) => {
+      console.log('I have a response');
+      console.log(response[1])
+
+      res.send(response[1].data);
+    })
+    .catch((err) => {
+      console.log('error with bundle request');
+      res.end();
+    })
+});
 
 app.get('/products/:productId/summary', (req, res) => {
   let id = req.params.productId;
@@ -71,7 +67,6 @@ app.get('/shoes/:shoeID/sizes', (req, res) => {
 });
 
 app.get('/shoes/:shoeID/colors/:colorID/quantities', (req, res) => {
-
   let {shoeID, colorID} = req.params;
 
   axios.get(`http://localhost:3001/shoes/${shoeID}/colors/${colorID}/quantities`)

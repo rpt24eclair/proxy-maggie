@@ -4,7 +4,7 @@
     <title>Somebirds App</title>
     <meta charset='utf-8'>
     <link rel='stylesheet' type='text/css' href='styles.css'>
-    <link rel='stylesheet' type='text/css' href='http://localhost:3002/styles.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel='stylesheet' type='text/css' href='http://localhost:3001/dist/styles.css'>
   </head>
   <body>
@@ -15,28 +15,34 @@
           <div id='product-header'>
             <h1 id='header-name'>Men's Wool Runners</h1>
             <p id='header-price'>$125</p>
+            <div id='stars'>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star"></span>
+            </div>
           </div>
           <div id='ColorAndSizeSelection'>Sizes</div>
           <div id='summary'></div>
         </div>
       </div>
-      <!-- <div id='feedback-container'></div> -->
     </div>
 
-    <!-- <script src='http://localhost:3001/dist/bundle.js'></script> -->
-    <!-- <script src='http://localhost:3002/bundle.js'></script> -->
-    <!-- <script src='http://localhost:3003/'></script> -->
-    <script crossorigin src="https://unpkg.com/react@16.8/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@16.8/umd/react-dom.production.min.js"></script>
+    <script src='http://localhost:3001/dist/bundle.js'></script>
+    <script src='http://localhost:3002/bundle.js'></script>
+    <!-- <script src='http://localhost:3000/bundles'></script> -->
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
     <script>
-      // ReactDOM.render(
-      //   React.createElement(ProductMenu, { modelName: 'mens-wool-runners', modelId: 1 }, null),
-      //   document.getElementById('summary')
-      // );
-      // ReactDOM.render(
-      //   React.createElement(App),
-      //   document.getElementById('root')
-      // );
-    </script>
+      $.get('http://localhost:3000/bundles', function(data) {
+        console.log(data);
+        var test = document.createElement('script');
+        test.src = data;
+        document.getElementsByTagName('body')[0].appendChild(test)
+      })
+    </script> -->
+    <script crossorigin src="https://unpkg.com/react@16.8/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16.8/umd/react-dom.production.min.js"></script>>
   </body>
 </html>
