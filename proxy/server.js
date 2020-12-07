@@ -15,8 +15,8 @@ app.get('/bundles', (req, res) => {
 
   Promise.all([promise1, promise2])
     .then( (response) => {
-      console.log('I have a response');
-      console.log(response[1])
+      // console.log('I have a response');
+      // console.log(response[1])
 
       res.send(response[1].data);
     })
