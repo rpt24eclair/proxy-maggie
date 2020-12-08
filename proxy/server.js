@@ -8,22 +8,25 @@ const app = express();
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+//research middleware, promises, and response format
+
 app.get('/bundles', (req, res) => {
   console.log('here');
-  promise1 = axios.get(`http://localhost:3001/dist/bundle.js`);
-  promise2 = axios.get(`http://localhost:3002/bundle.js`);
+  let promise1 = axios.get(`http://localhost:3001/bundle.js`);
+  let promise2 = axios.get(`http://localhost:3002/bundle.js`);
 
   Promise.all([promise1, promise2])
-    .then( (response) => {
-      // console.log('I have a response');
-      // console.log(response[1])
-
-      res.send(response[1].data);
+    .then( (responses) => {
+      let bundles = '';
+      responses.forEach((response) => {
+        bundles += response.data;
+      });
+      res.send(bundles);
     })
     .catch((err) => {
       console.log('error with bundle request');
       res.end();
-    })
+    });
 });
 
 app.get('/products/:productId/summary', (req, res) => {
