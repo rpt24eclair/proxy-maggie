@@ -3,7 +3,7 @@ const path = require('path');
 const axios = require('axios');
 const port = 3000;
 const app = express();
-
+//change to local host if desired for environment
 const sizeColorServicePath = 'http://18.219.195.236:3001';
 const productServicePath = 'http://3.101.148.73:3002';
 
