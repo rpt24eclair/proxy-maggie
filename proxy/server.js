@@ -1,17 +1,13 @@
 const express = require('express');
 const path = require('path');
-const cors = require('cors');
 const axios = require('axios');
-
 const port = 3000;
 const app = express();
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-//research middleware, promises, and response format
-
 app.get('/bundles', (req, res) => {
-  console.log('here');
+
   let promise1 = axios.get(`http://localhost:3001/bundle.js`);
   let promise2 = axios.get(`http://localhost:3002/bundle.js`);
 
