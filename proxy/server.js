@@ -4,12 +4,15 @@ const axios = require('axios');
 const port = 3000;
 const app = express();
 
+const sizeColorServicePath = '18.219.195.236:3001'
+const productServicePath = '3.101.148.73:3002'
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/bundles', (req, res) => {
 
-  let promise1 = axios.get(`http://localhost:3001/bundle.js`);
-  let promise2 = axios.get(`http://localhost:3002/bundle.js`);
+  let promise1 = axios.get(`${sizeColorServicePath}/bundle.js`);
+  let promise2 = axios.get(`${productServicePath}/bundle.js`);
 
   Promise.all([promise1, promise2])
     .then( (responses) => {
