@@ -4,8 +4,8 @@ const axios = require('axios');
 const port = 3000;
 const app = express();
 //change to local host if desired for environment
-const sizeColorServicePath = 'http://18.219.195.236:3001';
-const productServicePath = 'http://3.101.148.73:3002';
+const sizeColorServicePath = 'http://3.18.69.132:3001';
+const productServicePath = 'http://54.241.116.3:3002';
 
 app.use(express.static(path.join(__dirname, 'public')));
 
