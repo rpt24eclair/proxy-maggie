@@ -33,7 +33,7 @@ app.get('/products/:productId/summary', (req, res) => {
 
   axios({
     method: 'get',
-    url: `http://localhost:3002/products/${id}/summary`
+    url: `${productServicePath}/products/${id}/summary`
   })
   .then((response) => {
     res.send(response.data);
@@ -47,7 +47,7 @@ app.get('/products/:productId/summary', (req, res) => {
 
 app.get('/shoes/:shoeID/colors', (req, res) => {
   let shoeID = req.params.shoeID;
-  axios.get(`http://localhost:3001/shoes/${shoeID}/colors`)
+  axios.get(`${sizeColorServicePath}/shoes/${shoeID}/colors`)
   .then((colors) => {
     res.send(colors.data);
   })
@@ -59,7 +59,7 @@ app.get('/shoes/:shoeID/colors', (req, res) => {
 app.get('/shoes/:shoeID/sizes', (req, res) => {
   let shoeID = req.params.shoeID;
 
-  axios.get(`http://localhost:3001/shoes/${shoeID}/sizes`)
+  axios.get(`${sizeColorServicePath}/shoes/${shoeID}/sizes`)
     .then(sizes => {
       res.send(sizes.data);
     })
@@ -71,7 +71,7 @@ app.get('/shoes/:shoeID/sizes', (req, res) => {
 app.get('/shoes/:shoeID/colors/:colorID/quantities', (req, res) => {
   let {shoeID, colorID} = req.params;
 
-  axios.get(`http://localhost:3001/shoes/${shoeID}/colors/${colorID}/quantities`)
+  axios.get(`${sizeColorServicePath}/shoes/${shoeID}/colors/${colorID}/quantities`)
     .then(quantities => {
       res.send(quantities.data);
     })
