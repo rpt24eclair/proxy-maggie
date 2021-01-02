@@ -3,13 +3,16 @@ const path = require('path');
 const axios = require('axios');
 const port = 3000;
 const app = express();
+//change to local host if desired for environment 'http://localhost:3001' 'http://localhost:3002'
+const sizeColorServicePath = 'http://3.18.69.132:3001';
+const productServicePath = 'http://54.241.116.3:3002';
 
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/bundles', (req, res) => {
 
-  let promise1 = axios.get(`http://localhost:3001/bundle.js`);
-  let promise2 = axios.get(`http://localhost:3002/bundle.js`);
+  let promise1 = axios.get(`${sizeColorServicePath}/bundle.js`);
+  let promise2 = axios.get(`${productServicePath}/bundle.js`);
 
   Promise.all([promise1, promise2])
     .then( (responses) => {
@@ -30,7 +33,7 @@ app.get('/products/:productId/summary', (req, res) => {
 
   axios({
     method: 'get',
-    url: `http://localhost:3002/products/${id}/summary`
+    url: `${productServicePath}/products/${id}/summary`
   })
   .then((response) => {
     res.send(response.data);
@@ -44,7 +47,7 @@ app.get('/products/:productId/summary', (req, res) => {
 
 app.get('/shoes/:shoeID/colors', (req, res) => {
   let shoeID = req.params.shoeID;
-  axios.get(`http://localhost:3001/shoes/${shoeID}/colors`)
+  axios.get(`${sizeColorServicePath}/shoes/${shoeID}/colors`)
   .then((colors) => {
     res.send(colors.data);
   })
@@ -56,7 +59,7 @@ app.get('/shoes/:shoeID/colors', (req, res) => {
 app.get('/shoes/:shoeID/sizes', (req, res) => {
   let shoeID = req.params.shoeID;
 
-  axios.get(`http://localhost:3001/shoes/${shoeID}/sizes`)
+  axios.get(`${sizeColorServicePath}/shoes/${shoeID}/sizes`)
     .then(sizes => {
       res.send(sizes.data);
     })
@@ -68,7 +71,7 @@ app.get('/shoes/:shoeID/sizes', (req, res) => {
 app.get('/shoes/:shoeID/colors/:colorID/quantities', (req, res) => {
   let {shoeID, colorID} = req.params;
 
-  axios.get(`http://localhost:3001/shoes/${shoeID}/colors/${colorID}/quantities`)
+  axios.get(`${sizeColorServicePath}/shoes/${shoeID}/colors/${colorID}/quantities`)
     .then(quantities => {
       res.send(quantities.data);
     })
