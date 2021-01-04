@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon server.js",
-    "upload": "node /s3_utils/s3_upload bundles-of-joy "
+    "build": "webpack",
+    "upload": "node ./s3_utils/s3_upload.js bundles-of-joy ./public/bundles.js"
   },
   "repository": {
     "type": "git",
@@ -25,5 +26,14 @@
     "nodemon": "^2.0.6",
     "path": "^0.12.7",
     "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-react": "^7.12.10",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^5.0.1",
+    "style-loader": "^2.0.0"
   }
 }
