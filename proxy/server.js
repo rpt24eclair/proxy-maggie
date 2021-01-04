@@ -20,6 +20,7 @@ app.get('/bundles', (req, res) => {
       responses.forEach((response) => {
         bundles += response.data;
       });
+      //fs wrtie file
       res.send(bundles);
     })
     .catch((err) => {
