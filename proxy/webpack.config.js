@@ -4,7 +4,8 @@ var DIST_DIR = path.join(__dirname, '/public');
 module.exports = {
   entry: [
     "../somebirdsColorAndSizeSelection/client/index.jsx",
-    "../somebirds-product-accordion/client/index.jsx"
+    "../somebirds-product-accordion/client/index.jsx",
+    "../somebirds-product-images/client/index.jsx"
   ],
   module: {
     rules: [
