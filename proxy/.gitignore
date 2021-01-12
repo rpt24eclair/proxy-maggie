@@ -20,6 +20,7 @@ jspm_packages/
 # Imported Projects
 ../somebirds-product-accordion/
 ../somebirdsColorAndSizeSelection/
+../somebirds-product-images/
 
 *.pem
 *.sh
