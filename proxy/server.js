@@ -6,6 +6,7 @@ const app = express();
 //change to local host if desired for environment 'http://localhost:3001' 'http://localhost:3002'
 const sizeColorServicePath = 'http://3.18.69.132:3001';
 const productServicePath = 'http://54.241.116.3:3002';
+const galleryServicePath = 'http://54.241.116.3:3004';
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -20,7 +21,6 @@ app.get('/bundles', (req, res) => {
       responses.forEach((response) => {
         bundles += response.data;
       });
-      //fs wrtie file
       res.send(bundles);
     })
     .catch((err) => {
@@ -40,7 +40,24 @@ app.get('/products/:productId/summary', (req, res) => {
     res.send(response.data);
   })
   .catch((err) => {
-    console.log(err);
+    console.error(err);
+    res.send([]);
+  });
+
+});
+
+app.get('/products/:productId/gallery', (req, res) => {
+  let id = req.params.productId;
+
+  axios({
+    method: 'get',
+    url: `${galleryServicePath}/products/${id}/gallery`
+  })
+  .then((response) => {
+    res.send(response.data);
+  })
+  .catch((err) => {
+    console.error(err);
     res.send([]);
   });
 
