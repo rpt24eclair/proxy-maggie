@@ -21,6 +21,8 @@ jspm_packages/
 ../somebirds-product-accordion/
 ../somebirdsColorAndSizeSelection/
 ../somebirds-product-images/
+../somebirdsNavBar/
+../somebirdsreviews/
 
 *.pem
 *.sh

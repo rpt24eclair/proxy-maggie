@@ -7,27 +7,28 @@ const app = express();
 const sizeColorServicePath = 'http://3.18.69.132:3001';
 const productServicePath = 'http://54.241.116.3:3002';
 const galleryServicePath = 'http://54.241.116.3:3004';
+const feedbackServicePath = 'http://3.18.69.132:3003'
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/bundles', (req, res) => {
+// app.get('/bundles', (req, res) => {
 
-  let promise1 = axios.get(`${sizeColorServicePath}/bundle.js`);
-  let promise2 = axios.get(`${productServicePath}/bundle.js`);
+//   let promise1 = axios.get(`${sizeColorServicePath}/bundle.js`);
+//   let promise2 = axios.get(`${productServicePath}/bundle.js`);
 
-  Promise.all([promise1, promise2])
-    .then( (responses) => {
-      let bundles = '';
-      responses.forEach((response) => {
-        bundles += response.data;
-      });
-      res.send(bundles);
-    })
-    .catch((err) => {
-      console.log('error with bundle request');
-      res.end();
-    });
-});
+//   Promise.all([promise1, promise2])
+//     .then( (responses) => {
+//       let bundles = '';
+//       responses.forEach((response) => {
+//         bundles += response.data;
+//       });
+//       res.send(bundles);
+//     })
+//     .catch((err) => {
+//       console.log('error with bundle request');
+//       res.end();
+//     });
+// });
 
 app.get('/products/:productId/summary', (req, res) => {
   let id = req.params.productId;
@@ -95,6 +96,28 @@ app.get('/shoes/:shoeID/colors/:colorID/quantities', (req, res) => {
     })
     .catch(err => {
       console.log('this broke: shoeid and colorid');
+    });
+});
+
+app.get('/shoes/:shoeId/reviews/:count', (req, res) => {
+  let {shoeId, count} = req.params;
+  axios.get(`${feedbackServicePath}/shoes/${shoeId}/reviews/${count}`)
+  .then(response => {
+      res.send(response.data);
+    })
+    .catch(err => {
+      console.error(err);
+    });
+});
+
+app.get('/shoes/:shoeId/rating', (req, res) => {
+  let {shoeId} = req.params;
+  axios.get(`${feedbackServicePath}/shoes/${shoeId}/rating`)
+  .then(response => {
+      res.send(response.data);
+    })
+    .catch(err => {
+      console.error(err);
     });
 });
 
