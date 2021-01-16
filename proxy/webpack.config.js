@@ -7,7 +7,8 @@ module.exports = {
     "../somebirds-product-accordion/client/index.jsx",
     "../somebirds-product-images/client/index.jsx",
     "../somebirdsReviews/client/index.jsx",
-    "../somebirdsNavBar/client/index.jsx"
+    "../somebirdsNavBar/client/index.jsx",
+    "../somebirdsFooter/client/index.jsx"
   ],
   module: {
     rules: [

@@ -26,3 +26,5 @@ jspm_packages/
 
 *.pem
 *.sh
+
+public/bundles.js

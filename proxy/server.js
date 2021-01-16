@@ -11,25 +11,6 @@ const feedbackServicePath = 'http://3.18.69.132:3003'
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-// app.get('/bundles', (req, res) => {
-
-//   let promise1 = axios.get(`${sizeColorServicePath}/bundle.js`);
-//   let promise2 = axios.get(`${productServicePath}/bundle.js`);
-
-//   Promise.all([promise1, promise2])
-//     .then( (responses) => {
-//       let bundles = '';
-//       responses.forEach((response) => {
-//         bundles += response.data;
-//       });
-//       res.send(bundles);
-//     })
-//     .catch((err) => {
-//       console.log('error with bundle request');
-//       res.end();
-//     });
-// });
-
 app.get('/products/:productId/summary', (req, res) => {
   let id = req.params.productId;
 
