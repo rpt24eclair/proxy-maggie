@@ -23,6 +23,7 @@ jspm_packages/
 ../somebirds-product-images/
 ../somebirdsNavBar/
 ../somebirdsreviews/
+../somebirdsFooter
 
 *.pem
 *.sh

@@ -1,6 +1,4 @@
 import { check } from "k6";
-//import { sleep } from "k6";
-
 import http from 'k6/http';
 
 export let options = {
@@ -23,8 +21,3 @@ export default function () {
     "is status 200": (r) => r.status === 200
   });
 }
-
-// export default function () {
-//   http.get('http://localhost:3000/?prod=9900000');
-//   sleep(1);
-// };
