@@ -28,6 +28,5 @@ jspm_packages/
 *.pem
 *.sh
 
-public/bundles.js
 newrelic.js
 newrelic_creds.js

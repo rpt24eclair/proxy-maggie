@@ -7,10 +7,10 @@ const app = express();
 //change to local host if desired for environment 'http://localhost:3001' 'http://localhost:3002'
 app.locals.newrelic = newrelic;
 
-const sizeColorServicePath = 'http://localhost:3001';
+const sizeColorServicePath = 'http://54.174.50.6:3001';
 // const productServicePath = 'http://54.241.116.3:3002';
-// const galleryServicePath = 'http://54.241.116.3:3004';
-// const feedbackServicePath = 'http://3.18.69.132:3003'
+const galleryServicePath = ' http://54.176.117.13:3004';
+const feedbackServicePath = 'http://52.14.216.129:3003'
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -34,18 +34,17 @@ res.end()
 app.get('/products/:productId/gallery', (req, res) => {
   let id = req.params.productId;
 
-  // axios({
-  //   method: 'get',
-  //   url: `${galleryServicePath}/products/${id}/gallery`
-  // })
-  // .then((response) => {
-  //   res.send(response.data);
-  // })
-  // .catch((err) => {
-  //   console.error(err);
-  //   res.send([]);
-  // });
- res.end()
+  axios({
+    method: 'get',
+    url: `${galleryServicePath}/products/${id}/gallery`
+  })
+  .then((response) => {
+    res.send(response.data);
+  })
+  .catch((err) => {
+    console.error(err);
+    res.send([]);
+  });
 });
 
 app.get('/shoes/:shoeID/colors', (req, res) => {
@@ -84,27 +83,58 @@ app.get('/shoes/:shoeID/colors/:colorID/quantities', (req, res) => {
 });
 
 app.get('/shoes/:shoeId/reviews/:count', (req, res) => {
-  // let {shoeId, count} = req.params;
-  // axios.get(`${feedbackServicePath}/shoes/${shoeId}/reviews/${count}`)
-  // .then(response => {
-  //     res.send(response.data);
-  //   })
-  //   .catch(err => {
-  //     console.error(err);
-  //   });
-  res.end()
+  let {shoeId, count} = req.params;
+  axios.get(`${feedbackServicePath}/shoes/${shoeId}/reviews/${count}`)
+  .then(response => {
+      res.send(response.data);
+    })
+    .catch(err => {
+      console.error(err);
+    });
 });
 
 app.get('/shoes/:shoeId/rating', (req, res) => {
-  // let {shoeId} = req.params;
-  // axios.get(`${feedbackServicePath}/shoes/${shoeId}/rating`)
-  // .then(response => {
-  //     res.send(response.data);
-  //   })
-  //   .catch(err => {
-  //     console.error(err);
-  //   });
-  res.end()
+  let {shoeId} = req.params;
+  axios.get(`${feedbackServicePath}/shoes/${shoeId}/rating`)
+  .then(response => {
+      res.send(response.data);
+    })
+    .catch(err => {
+      console.error(err);
+    });
+});
+
+app.get('/selection', async (req, res)=>{
+  axios.get(`${sizeColorServicePath}/bundle.js`)
+  .then(bundle => {
+    res.send(bundle.data);
+  })
+  .catch (err => {
+    console.log(err);
+    res.end();
+  })
+});
+
+app.get('/gallery', async (req, res)=>{
+  axios.get(`${galleryServicePath}/bundle.js`)
+  .then(bundle => {
+    res.send(bundle.data);
+  })
+  .catch (err => {
+    console.log(err);
+    res.end();
+  })
+});
+
+app.get('/feedback', async (req, res)=>{
+  axios.get(`${feedbackServicePath}/bundle.js`)
+  .then(bundle => {
+    res.send(bundle.data);
+  })
+  .catch (err => {
+    console.log(err);
+    res.end();
+  })
 });
 
 app.listen(port, () => {

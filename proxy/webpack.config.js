@@ -1,9 +1,11 @@
 const path = require('path');
 var DIST_DIR = path.join(__dirname, '/public');
+const axios = require('axios');
+
 
 module.exports = {
   entry: [
-    "../../somebirdsColorAndSizeSelection/client/index.jsx",
+    //"../../somebirdsColorAndSizeSelection/client/index.jsx",
     //"../somebirds-product-accordion/client/index.jsx",
     //"../somebirds-product-images/client/index.jsx",
     //"../somebirdsReviews/client/index.jsx",
@@ -38,5 +40,6 @@ module.exports = {
   output: {
     path: DIST_DIR,
     filename: 'bundles.js'
-  }
+  },
+  mode: "development",
 }
